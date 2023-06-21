@@ -39,7 +39,7 @@ export default function App() {
           <Ionicons name="ios-camera" size={24} color="#ffffff" />
         </View>
       </View>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </ImageBackground>
   );
 }
