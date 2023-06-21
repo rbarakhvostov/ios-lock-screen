@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, ImageBackground, View } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import dayjs from 'dayjs';
+import NotificationsList from './src/components/NotificationsList';
 import wallpaper from './assets/images/wallpaper.webp';
 
 export default function App() {
@@ -14,15 +15,21 @@ export default function App() {
     }, 1000);
 
     return () => clearInterval(interval);
-  })
+  });
 
   return (
     <ImageBackground source={wallpaper} style={styles.container}>
-      <View style={styles.header}>
-        <Ionicons name="ios-lock-closed" size={20} color="#ffffff" />
-        <Text style={styles.date}>{date.format("dddd, DD MMMM")}</Text>
-        <Text style={styles.time}>{date.format("hh:mm:ss")}</Text>
-      </View>
+      
+
+      <NotificationsList
+        ListHeaderComponent={() => (
+          <View style={styles.header}>
+            <Ionicons name="ios-lock-closed" size={20} color="#ffffff" />
+            <Text style={styles.date}>{date.format("dddd, DD MMMM")}</Text>
+            <Text style={styles.time}>{date.format("hh:mm")}</Text>
+          </View>
+        )}
+      />
 
       <View style={styles.footer}>
         <View style={styles.icon}>
@@ -40,7 +47,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'stretch'
   },
   header: {
     justifyContent: "center",
