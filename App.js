@@ -1,67 +1,34 @@
-import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, ImageBackground, View } from 'react-native';
+import { StyleSheet, ImageBackground, View } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import dayjs from 'dayjs';
-import Animated, { SlideInDown, SlideInUp } from 'react-native-reanimated';
+import Animated, { SlideInDown } from 'react-native-reanimated';
 import NotificationsList from './src/components/NotificationsList';
+import DateTime from './src/components/DateTime'
 import wallpaper from './assets/images/wallpaper.webp';
 
-export default function App() {
-  const [date, setDate] = useState(dayjs());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDate(dayjs())
-    }, 1000);
-
-    return () => clearInterval(interval);
-  });
-
-  return (
-    <ImageBackground source={wallpaper} style={styles.container}>     
-      <NotificationsList
-        ListHeaderComponent={() => (
-          <Animated.View entering={SlideInUp} style={styles.header}>
-            <Ionicons name="ios-lock-closed" size={20} color="#ffffff" />
-            <Text style={styles.date}>{date.format("dddd, DD MMMM")}</Text>
-            <Text style={styles.time}>{date.format("hh:mm")}</Text>
-          </Animated.View>
-        )}
-      />
-      <Animated.View entering={SlideInDown} style={styles.footer}>
-        <View style={styles.icon}>
-          <MaterialCommunityIcons name="flashlight" size={24} color="#ffffff" />
-        </View>
-        <View style={styles.icon}>
-          <Ionicons name="ios-camera" size={24} color="#ffffff" />
-        </View>
-      </Animated.View>
-      <StatusBar style="light" />
-    </ImageBackground>
-  );
-}
+export default App = () => (
+  <ImageBackground source={wallpaper} style={styles.container}>     
+    <NotificationsList
+      ListHeaderComponent={() => (
+        <DateTime />
+      )}
+    />
+    <Animated.View entering={SlideInDown} style={styles.footer}>
+      <View style={styles.icon}>
+        <MaterialCommunityIcons name="flashlight" size={24} color="#ffffff" />
+      </View>
+      <View style={styles.icon}>
+        <Ionicons name="ios-camera" size={24} color="#ffffff" />
+      </View>
+    </Animated.View>
+    <StatusBar style="light" />
+  </ImageBackground>
+);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'stretch'
-  },
-  header: {
-    justifyContent: "center",
-    alignItems: "center",
-    height: 270,
-  },
-  date: {
-    marginTop: 10,
-    fontSize: 20,
-    fontWeight: 500,
-    color: "#c3fffe"
-  },
-  time: {
-    fontSize: 82,
-    fontWeight: 700,
-    color: "#c3fffe"
   },
   footer: {
     flexDirection: 'row',
