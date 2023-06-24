@@ -18,9 +18,7 @@ export default function App() {
   });
 
   return (
-    <ImageBackground source={wallpaper} style={styles.container}>
-      
-
+    <ImageBackground source={wallpaper} style={styles.container}>     
       <NotificationsList
         ListHeaderComponent={() => (
           <View style={styles.header}>
@@ -30,7 +28,6 @@ export default function App() {
           </View>
         )}
       />
-
       <View style={styles.footer}>
         <View style={styles.icon}>
           <MaterialCommunityIcons name="flashlight" size={24} color="#ffffff" />
@@ -55,13 +52,13 @@ const styles = StyleSheet.create({
     height: 270,
   },
   date: {
-    marginTop: 20,
+    marginTop: 10,
     fontSize: 20,
     fontWeight: 500,
     color: "#c3fffe"
   },
   time: {
-    fontSize: 72,
+    fontSize: 82,
     fontWeight: 700,
     color: "#c3fffe"
   },
@@ -70,6 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignSelf: 'stretch',
     height: 75,
+    paddingVertical: 10,
     paddingHorizontal: 20,
     marginTop: 'auto'
   },
