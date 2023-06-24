@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, ImageBackground, View } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import dayjs from 'dayjs';
+import Animated, { SlideInDown, SlideInUp } from 'react-native-reanimated';
 import NotificationsList from './src/components/NotificationsList';
 import wallpaper from './assets/images/wallpaper.webp';
 
@@ -21,21 +22,21 @@ export default function App() {
     <ImageBackground source={wallpaper} style={styles.container}>     
       <NotificationsList
         ListHeaderComponent={() => (
-          <View style={styles.header}>
+          <Animated.View entering={SlideInUp} style={styles.header}>
             <Ionicons name="ios-lock-closed" size={20} color="#ffffff" />
             <Text style={styles.date}>{date.format("dddd, DD MMMM")}</Text>
             <Text style={styles.time}>{date.format("hh:mm")}</Text>
-          </View>
+          </Animated.View>
         )}
       />
-      <View style={styles.footer}>
+      <Animated.View entering={SlideInDown} style={styles.footer}>
         <View style={styles.icon}>
           <MaterialCommunityIcons name="flashlight" size={24} color="#ffffff" />
         </View>
         <View style={styles.icon}>
           <Ionicons name="ios-camera" size={24} color="#ffffff" />
         </View>
-      </View>
+      </Animated.View>
       <StatusBar style="light" />
     </ImageBackground>
   );
