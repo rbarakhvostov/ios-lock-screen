@@ -4,6 +4,7 @@ import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Animated, { SlideInDown } from 'react-native-reanimated';
 import NotificationsList from './src/components/NotificationsList';
 import DateTime from './src/components/DateTime'
+import SwipeUptoOpen from './src/components/SwipeUpToOpen';
 import wallpaper from './assets/images/wallpaper.webp';
 
 export default App = () => (
@@ -17,6 +18,7 @@ export default App = () => (
       <View style={styles.icon}>
         <MaterialCommunityIcons name="flashlight" size={24} color="#ffffff" />
       </View>
+      <SwipeUptoOpen />
       <View style={styles.icon}>
         <Ionicons name="ios-camera" size={24} color="#ffffff" />
       </View>
@@ -37,7 +39,6 @@ const styles = StyleSheet.create({
     height: 75,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    marginTop: 'auto'
   },
   icon: {
     justifyContent: "center",
