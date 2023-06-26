@@ -1,12 +1,24 @@
-import { FlatList, useWindowDimensions } from "react-native";
+import { useWindowDimensions } from "react-native";
 import NotificationItem from "./NotificationItem";
 import notifications from "../../assets/data/notifications";
+import Animated, { useAnimatedScrollHandler, withTiming } from "react-native-reanimated";
 
-const NotificationsList = (props) => {
+const NotificationsList = ({footerVisibility, ...props}) => {
   const { height } = useWindowDimensions();
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      const y = event.contentOffset.y;
+ 
+      if (y < 10) {
+        footerVisibility.value = withTiming(1, { duration: 300 });
+      } else {
+        footerVisibility.value = withTiming(0, { duration: 300 });
+      }
+    }
+  });
 
   return (
-    <FlatList
+    <Animated.FlatList
       data={notifications}
       renderItem={({ item, index }) => (
         <NotificationItem
@@ -14,6 +26,8 @@ const NotificationsList = (props) => {
           index={index}
         />
       )}
+      onScroll={scrollHandler}
+      scrollEventThrottle={1000 / 60}
       {...props}
     />
   );
