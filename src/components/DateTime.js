@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text } from 'react-native';
-import Animated, { SlideInUp } from 'react-native-reanimated';
+import { StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import dayjs from 'dayjs';
 
@@ -16,11 +15,11 @@ const DateTime = () => {
   }, []);
 
   return (
-    <Animated.View entering={SlideInUp} style={styles.header}>
+    <View style={styles.header}>
       <Ionicons name="ios-lock-closed" size={20} color="#ffffff" />
       <Text style={styles.date}>{date.format("dddd, DD MMMM")}</Text>
       <Text style={styles.time}>{date.format("hh:mm")}</Text>
-    </Animated.View>
+    </View>
   );
 }
 

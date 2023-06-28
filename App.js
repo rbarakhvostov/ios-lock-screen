@@ -1,8 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ImageBackground, View } from 'react-native';
+import { StyleSheet, ImageBackground, View, Text } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Animated, {
-  SlideInDown,
   useSharedValue,
   useAnimatedStyle,
   interpolate
@@ -20,14 +19,14 @@ export default App = () => {
   }));
 
   return (
-    <ImageBackground source={wallpaper} style={styles.container}>     
+    <ImageBackground source={wallpaper} style={styles.container}>
       <NotificationsList
         footerVisibility={footerVisibility}
         ListHeaderComponent={() => (
           <DateTime />
         )}
       />
-      <Animated.View entering={SlideInDown} style={[styles.footer, animatedFooterStyle]}>
+      <Animated.View style={[styles.footer, animatedFooterStyle]}>
         <View style={styles.icon}>
           <MaterialCommunityIcons name="flashlight" size={24} color="#ffffff" />
         </View>
