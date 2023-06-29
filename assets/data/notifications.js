@@ -1,6 +1,6 @@
-import calendar from "../images/apps/calendar.png";
-import fitness from "../images/apps/fitness.webp";
-import mail from "../images/apps/mail.png";
+import calendar from "../images/calendar.png";
+import fitness from "../images/fitness.webp";
+import mail from "../images/mail.png";
 
 export default [
   {

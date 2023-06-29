@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, Image, useWindowDimensions } from "react-native
 import Animated, {
   useAnimatedStyle,
   interpolate,
-  withTiming
 } from 'react-native-reanimated';
 
 export const NOTIFICATION_HEIGHT = 80;

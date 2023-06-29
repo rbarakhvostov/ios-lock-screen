@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ImageBackground, View, Text } from 'react-native';
+import { StyleSheet, ImageBackground, View } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Animated, {
   useSharedValue,
