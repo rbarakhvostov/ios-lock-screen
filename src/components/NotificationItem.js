@@ -15,9 +15,15 @@ const NotificationItem = ({ data, index, listVisibility }) => {
   const startPosition = NOTIFICATION_HEIGHT * index;
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{
-      translateY: interpolate(listVisibility.value, [0, 1], [containerHeight - startPosition, 0])
-    }]
+    transform: [
+      {
+        translateY: interpolate(listVisibility.value, [0, 1], [containerHeight - startPosition, 0]),
+      },
+      {
+        scale: interpolate(listVisibility.value, [0, 1], [0.5, 1]),
+      }
+    ],
+    opacity: listVisibility.value
   }));
 
   return (

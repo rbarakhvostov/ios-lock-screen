@@ -22,7 +22,7 @@ const NotificationsList = ({footerVisibility, ...props}) => {
     },
     onEndDrag: (event) => {
       if (event.contentOffset.y < -10 && listVisibility.value === 1) {
-        listVisibility.value = withSpring(0)
+        listVisibility.value = withTiming(0, { duration: 500 })
       } else if (event.contentOffset.y > 0 && listVisibility.value === 0) {
         listVisibility.value = withSpring(1)
       }
